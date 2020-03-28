@@ -8,10 +8,10 @@ class PlugBoard:
 
     def connectTwo(self, t1, t2):
         if self._settings[t1] != t1:
-            print(chr(t1+65) + " is already in use")
+            # print(chr(t1+65) + " is already in use")
             return -1
         if self._settings[t2] != t2:
-            print(chr(t2+65) + " is already in use")
+            # print(chr(t2+65) + " is already in use")
             return -2
         else:
             self._settings[t1] = t2
@@ -20,9 +20,12 @@ class PlugBoard:
     
     def removeTwo(self, t1, t2):
         if self._settings[t1] == t1:
-            print(chr(t1+65) + " is not plugged")
+            # print(chr(t1+65) + " is not plugged")
+            return -1
         if self._settings[t2] != t2:
-            print(chr(t2+65) + " is not plugged")
+            # print(chr(t2+65) + " is not plugged")
+            return -2
         else:
             self._settings[t1] = t1
             self._settings[t2] = t2
+            return 0

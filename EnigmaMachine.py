@@ -28,6 +28,10 @@ class EnigmaMachine:
             err = self._plugBoard.connectTwo(t1,t2)
             if err == 0:
                 self.p(i1 + " is now paired with " + i2)
+            elif err == -1:
+                self.p(i1 + " is already plugged in!")
+            elif err == -2:
+                self.p(i2 + " is already plugged in!")
     # TODO: Add RotorSystem
     
     # TODO: Reflector
