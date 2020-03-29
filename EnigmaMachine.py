@@ -19,19 +19,17 @@ class EnigmaMachine:
             self._debugMode = True
 
     # TODO: Add Plugboard
-    def plugTwo(self, i1, i2):
-        t1 = ord(i1.upper())-65
-        t2 = ord(i2.upper())-65
-        if t1 == t2:
+    def plugTwo(self, c1, c2):
+        if c1 == c2:
             self.p("You can't plug same alphabet!")
         else:
-            err = self._plugBoard.connectTwo(t1,t2)
+            err = self._plugBoard.connectTwo(c1,c2)
             if err == 0:
-                self.p(i1 + " is now paired with " + i2)
+                self.p(c1 + " is now paired with " + c2)
             elif err == -1:
-                self.p(i1 + " is already plugged in!")
+                self.p(c1 + " is already plugged in!")
             elif err == -2:
-                self.p(i2 + " is already plugged in!")
+                self.p(c2 + " is already plugged in!")
     # TODO: Add RotorSystem
     
     # TODO: Reflector
@@ -39,13 +37,12 @@ class EnigmaMachine:
     # Encryption
     def encrypt(self, c):
         # convert input character to integer for easier conversion
-        input = ord(c.upper())-65
         self.p("input char was " + c)
         # Plugboard
-        plug_result = self._plugBoard.translate(input)
-        self.p(chr(input+65) + "->" + chr(plug_result+65))
+        plug_result = self._plugBoard.translate(c)
+        self.p(c + "->" + c)
 
         result = plug_result
-        result = chr(result+65)
+        
         self.p(result)
         return result

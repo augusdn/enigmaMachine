@@ -9,7 +9,7 @@ print("pressing any other key will open settings")
 while 1:
     key = msvcrt.getch().decode()
     if key.isalpha():
-        enigma.encrypt(key)
+        enigma.encrypt(key.upper())
     else:
         while 1:
             print("#Menu")
@@ -26,14 +26,14 @@ while 1:
             elif key == 1:
                 #plugboard settings
                 print("Press first target alphabet: ")
-                t1 = msvcrt.getch().decode()
+                t1 = msvcrt.getch().decode().upper()
                 while not t1.isalpha():
-                    t1 = msvcrt.getch().decode()
+                    t1 = msvcrt.getch().decode().upper()
                 print(t1)
                 print("Press second target alphabet: ")
-                t2 = msvcrt.getch().decode()
+                t2 = msvcrt.getch().decode().upper()
                 while not t2.isalpha():
-                    t2 = msvcrt.getch().decode()
+                    t2 = msvcrt.getch().decode().upper()
                 print(t2)
                 enigma.plugTwo(t1, t2)
             elif key == 4:
