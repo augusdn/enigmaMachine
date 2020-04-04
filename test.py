@@ -1,6 +1,6 @@
-from Rotor import Rotor
+from Reflector import Reflector
 
-test = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'A')
+test = Reflector("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'A')
 test.rotate()
 print(test.translate('A'))
 print(test.reverse('E'))

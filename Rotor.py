@@ -1,8 +1,11 @@
 class Rotor:
-    def __init__(self, wiring, notch):
+    def __init__(self, wiring=None, notch="A", name=None, model=None, date=None, position="A"):
         self._wiring = wiring
         self._notch = ord(notch.upper())-65
-        self._position = 0
+        self._name = name
+        self._model = model
+        self._date = date
+        self._position = ord(position.upper())-65
         self._ring = 0
 
     def rotate(self):
@@ -14,8 +17,8 @@ class Rotor:
         else:
             return 0
     
-    def ringSettings(self, i):
-        self._ring = (self._ring + i) % 26
+    def ringSettings(self, c):
+        self._ring = ord(c.upper())-65
 
     def reset(self):
         self._position = 0
@@ -33,3 +36,16 @@ class Rotor:
             alphabet = chr(a+65)
             if (self.translate(alphabet) == c):
                 return alphabet
+    
+    def getPosition(self):
+        offset = chr(self._position + 65)
+        return offset
+
+    def __str__(self):
+        return """
+        Name: %s
+        Model: %s
+        Date: %s
+        Wiring: %s
+        Position: %s
+        Ring: %s""" % (self._name, self._model, self._date, self._wiring, chr(self._position+65), chr(self._ring+65))

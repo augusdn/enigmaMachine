@@ -9,8 +9,8 @@ print("pressing any other key will open settings")
 while 1:
     key = msvcrt.getch().decode()
     if key.isalpha():
-        enigma.encrypt(key.upper())
-    else:
+        print(enigma.encrypt(key.upper()))
+    elif key.isdigit():
         while 1:
             print("#Menu")
             print("0: Debug Mode ON/OFF")
@@ -36,8 +36,35 @@ while 1:
                     t2 = msvcrt.getch().decode().upper()
                 print(t2)
                 enigma.plugTwo(t1, t2)
+            elif key == 2:
+                print("Which Rotor to modify? from 1-3")
+                t1 = int(msvcrt.getch().decode())
+                print("Changing " + str(t1))
+                print("1 = Change Rotor, 2 = Change position, 3 = ring setting, 4 = print Setting")
+                t2 = int(msvcrt.getch().decode())
+                if t2 == 1:
+                    print("Change " + str(t1) + " to? from 1-5")
+                    t2 = int(msvcrt.getch().decode())
+                    enigma.changeRotor(t1, t2)
+                elif t2 == 2:
+                    print("Change position of " + str(t1) + " to? from A-Z")
+                    t2 = msvcrt.getch().decode().upper()
+                    enigma._rotorSystem.changePosition(t1, t2)
+                elif t2 == 3:
+                    print("Change ring setting of " + str(t1) + " to? from A-Z")
+                    t2 = msvcrt.getch().decode().upper()
+                    enigma._rotorSystem.changeRing(t1,t2)
+                elif t2 == 4:
+                    enigma._rotorSystem.printSettings()
+            elif key == 3:
+                print("Change Reflector to? 1-3")
+                t2 = int(msvcrt.getch().decode())
+                enigma._rotorSystem._rotors[3] = enigma._rotorSystem._reflectorList[t2-1]
+                enigma._rotorSystem.printSettings()
             elif key == 4:
                 print("Back to Enigma")
+                print("press [a-zA-Z] to encrypt letter")
+                print("pressing any other key will open settings")
                 break
             else:
                 print("Exiting the program")

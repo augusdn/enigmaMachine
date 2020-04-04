@@ -4,8 +4,7 @@ from Plugboard import PlugBoard
 class EnigmaMachine:
     def __init__(self):
         self._plugBoard = PlugBoard()
-        self._rotorSystem = None
-        self._reflector = None
+        self._rotorSystem = RotorSystem()
         self._debugMode = False
 
     def p(self, str):
@@ -30,19 +29,29 @@ class EnigmaMachine:
                 self.p(c1 + " is already plugged in!")
             elif err == -2:
                 self.p(c2 + " is already plugged in!")
-    # TODO: Add RotorSystem
     
-    # TODO: Reflector
-    
+    def changeRotor(self, t1, t2):
+        self._rotorSystem.changeRotor(t1-1, t2)
+        self._rotorSystem.printSettings()
+
     # Encryption
     def encrypt(self, c):
         # convert input character to integer for easier conversion
-        self.p("input char was " + c)
+        self.p("Keyboard Input: " + c)
         # Plugboard
         plug_result = self._plugBoard.translate(c)
-        self.p(c + "->" + c)
-
-        result = plug_result
+        self.p("Plugboard Encryption: " + plug_result)
+        rotor_result = self._rotorSystem.translate(plug_result)
+        if self._debugMode:
+            print ("Rotors Position: " + rotor_result[0])
+            print ("Wheel 3 Encryption: " + rotor_result[1])
+            print ("Wheel 2 Encryption: " + rotor_result[2])
+            print ("Wheel 1 Encryption: " + rotor_result[3])
+            print ("Reflector Encryption: " + rotor_result[4])
+            print ("Wheel 1 Encryption: " + rotor_result[5])
+            print ("Wheel 2 Encryption: " + rotor_result[6])
+            print ("Wheel 3 Encryption: " + rotor_result[7])
+        plug_result = self._plugBoard.translate(rotor_result[7])
+        self.p("Plugboard Encryption: " + plug_result)
         
-        self.p(result)
-        return result
+        return plug_result
