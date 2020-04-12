@@ -26,8 +26,8 @@ class Rotor:
 
     def translate(self, c):
         t = ord(c)-65
-        offset = self._position + self._ring
-        result = chr( (ord(self._wiring[(t+self._position)%26])-65-offset)%26 + 65)
+        offset = self._position - self._ring
+        result = chr( (ord(self._wiring[(t+offset)%26])-65-offset)%26 + 65)
         # print (result)
         return result
     

@@ -16,3 +16,6 @@ class Reflector:
         return """
         Name: %s
         Wiring: %s""" % (self._name, self._wiring)
+
+    def rotate(self):
+        return

@@ -9,7 +9,7 @@ print("pressing any other key will open settings")
 while 1:
     key = msvcrt.getch().decode()
     if key.isalpha():
-        print(enigma.encrypt(key.upper()))
+        print(key.upper() + "=>" +enigma.encrypt(key.upper()))
     elif key.isdigit():
         while 1:
             print("#Menu")

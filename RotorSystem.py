@@ -6,7 +6,7 @@ class RotorSystem:
         self._rotorList = [ Rotor(wiring='EKMFLGDQVZNTOWYHXUSPAIBRCJ', notch="Q", name="I", model="Enigma 1", date="1930"),
                             Rotor(wiring="AJDKSIRUXBLHWTMCQGZNPYFVOE", notch="E", name="II", model="Enigma 1", date="1930"),
                             Rotor(wiring="BDFHJLCPRTXVZNYEIWGAKMUSQO", notch="V", name="III", model="Enigma 1", date="1930"),
-                            Rotor(wiring="ESOVPZJAYQUIRHXLNFTGKDCMWB", notch="J", name="VI", model="M3 Army", date="December 1938"),
+                            Rotor(wiring="ESOVPZJAYQUIRHXLNFTGKDCMWB", notch="J", name="IV", model="M3 Army", date="December 1938"),
                             Rotor(wiring="VZBRGITYUPSDNHLXAWMJQOFECK", notch="Z", name="V", model="M3 Army", date="December 1938")]
         self._reflectorList = [
             Reflector(wiring="EJMZALYXVBWFCRQUONTSPIKHGD", name="Reflector A"),
